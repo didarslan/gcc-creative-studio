@@ -33,9 +33,6 @@ steps:
     dir: frontend
 
   # 3. Trigger deployment in the target project
-  # NOT: Eğer bu adımda da "Worker Pool" hatası alırsanız, args kısmına 
-  # '--worker-pool=projects/vf-tr-aib-dev-gcs-sbx-alpha/locations/europe-west1/workerPools/private_worker_pool'
-  # eklememiz gerekecektir.
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     id: 'Trigger Deployment'
     entrypoint: 'gcloud'
@@ -51,11 +48,9 @@ steps:
 # You can define substitution variables that can be overridden by triggers.
 # These are default values.
 substitutions:
-  _TARGET_PROJECT_ID: 'vf-tr-aib-dev-gcs-sbx-alpha' # Mevcut proje ID'niz ile güncellendi
+  _TARGET_PROJECT_ID: 'creative-studio-dev' # Default project
   _ANGULAR_BUILD_COMMAND: 'build-dev' # Default Angular build command
-  _FIREBASE_PROJECT_ID: 'vf-tr-aib-dev-gcs-sbx-alpha' # Mevcut proje ID'niz ile güncellendi
+  _FIREBASE_PROJECT_ID: 'creative-studio-dev' # Replace with actual Firebase project IDs
 
 options:
   logging: CLOUD_LOGGING_ONLY
-  pool:
-    name: 'projects/vf-tr-aib-dev-gcs-sbx-alpha/locations/europe-west1/workerPools/private_worker_pool'
